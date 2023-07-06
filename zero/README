@@ -1,0 +1,140 @@
+========================================
+|1.           PROJECT INFO             |
+========================================
+
+Eddie Coda #817061330
+07/06/2023
+CS480 Prelim-Programming Assignment: Frequency Counter
+
+========================================
+|2.       	OVERVIEW               |
+========================================
+
+- The program counts the frequency of each alphabet letter (case insensitive) and five special characters (',' '.' ':' ';' '!') in all the .txt files under the 'data' directory.
+
+========================================
+|3.       	 FILES                 |
+========================================
+
+-- data
+
+-- zero -->
+Modify: 
+- 'count.h'	\\ Defines the function prototypes and data structures used in 'alphabetcount.c' and 'specialcount.c'
+- 'alphabetcount.c'	\\ Implements the logic to count the frequency of alphabet letters.
+- 'specialcount.c'	\\Implements the logic to count the frequency of special characters.
+- 'makefile'	\\Contains the rules to build the project and generate the executable files.
+
+DO NOT MODIFY:
+- 'testalphabetcount.c'
+- 'testspecialcharcount.c'
+
+========================================
+|4.              USAGE                 |
+========================================
+
+# To build the project, use the following commands in the terminal: #
+
+- make testalphabet  	// generate testalphabet executable file
+
+- make testspecial   	// generate testspecial executable file
+
+- ./testalphabet	// run the testalphabet program to count frequency of alphabet letters, the result will be stored in the file result.txt under result folder
+
+- ./testspecial		// run the testspecial program to count frequency of the five special words, the result will be stored in the file specialresult.txt under result folder.
+
+========================================
+|5.          PLAN OF ATTACK            |
+========================================
+
+1. Understand
+- examine the existing code in count.h, alphabetcount.c, specialcount.c, and mayyyyybe the makefile.
+
+2. Implement Alphabet Count 'alphabetcount.c'
+- start by implementing the logic to count the frequency of alphabet letters in alphabetcount.c.
+
+	Initialize an array of [26] to store the frequency of each alphabet letter
+
+	Use opendir to open the dir specified by the path
+	
+	Loop the readdir function to read each file in the directory
+	
+	Check each file ends with .txt If it does, open the file and read it char by char
+	
+	For each char check if it's a letter
+		If it is, convert it to lower case and inc the element in freq array
+		
+	After reading all files, open the output file and write the freq of each letter
+
+3. Test Alphabet Count
+- test implementation of alphabet count
+
+4. Implement Special Character Count 'specialcount.c'
+- implement the logic to count the frequency of special characters in specialcount.c.
+
+	Initialize an array [5] & store the freq of each special char
+	
+	Use opendir to open the dir
+	
+	Loop using readdir & read each file in the dir
+	
+	For each file, check it ends with .txt
+		If it does, open the file and read it char by char
+		
+	For each char, check if it's one of the special char's
+		If it is, inc element in the freq array
+		
+	After reading all files, open the output file and write the freq of each special char
+
+5. Test Special Character Count
+- test implementation of special character count 
+
+6. Update the Makefile
+- ensure that the makefile is correctly set up to build project even though I hope it simply works without any adjustmet.
+
+7. Test the Entire Project
+- run the provided test cases using the make commands and make sure that everything works 
+
+8. README
+- update the README periodically, alongside implementation and tests.
+
+9. Record the Terminal Session
+- record terminal session and save it to Test.log.
+
+========================================
+|6.       REFINED RECOMMENDATIONS      |
+========================================
+
+Helper Function - File Processing: 
+Create a helper function that processes all .txt files in a given directory. 
+This function should take as parameters
+- the directory path
+- a character checking function
+- an array to store the character frequencies
+It should process all .txt files in the directory, updating the frequency array as it goes. This function will be used in both alphabetlettercount and specialcharcount functions.
+
+Helper Function - Character Checking: 
+Create two character checking functions, for:
+- checking if a character is an alphabet letter (is_alphabet)
+- checking if a character is a special character (is_special)
+These functions should take a character as input and return a boolean value indicating whether the character matches the criteria.
+
+Helper Function - Writing to File: 
+Create a helper function that writes the frequencies to a specified file in the required format. 
+This function should take as parameters:
+- the file name
+- a frequency array
+- the size of the array. 
+This function will be used in both alphabetlettercount and specialcharcount functions.
+
+Main Logic Files: 
+Implement the alphabetlettercount and specialcharcount functions in alphabetcount.c and specialcount.c respectively, using the helper functions.
+
+========================================
+|6.             TESTING                |
+========================================
+
+
+[Include your test results here]
+
+

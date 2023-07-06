@@ -105,28 +105,26 @@ DO NOT MODIFY:
 |6.       REFINED RECOMMENDATIONS      |
 ========================================
 
-Helper Function - File Processing: 
-Create a helper function that processes all .txt files in a given directory. 
-This function should take as parameters
-- the directory path
-- a character checking function
-- an array to store the character frequencies
+Modular Approach: Break down the problem into smaller, manageable tasks. This will make the code easier to understand, debug, and maintain.
+
+Helper Function - File Processing: Create a helper function that processes all .txt files in a given directory. This function should take as parameters:
+the directory path
+a character checking function
+an array to store the character frequencies
 It should process all .txt files in the directory, updating the frequency array as it goes. This function will be used in both alphabetlettercount and specialcharcount functions.
 
-Helper Function - Character Checking: 
-Create two character checking functions, for:
-- checking if a character is an alphabet letter (is_alphabet)
-- checking if a character is a special character (is_special)
+Helper Function - Character Checking: Create two character checking functions, for:
+checking if a character is an alphabet letter (isalphabet)
+checking if a character is a special character (isspecialchar)
 These functions should take a character as input and return a boolean value indicating whether the character matches the criteria.
 
-Helper Function - Writing to File: 
-Create a helper function that writes the frequencies to a specified file in the required format. 
-This function should take as parameters:
-- the file name
-- a frequency array
-- the size of the array. 
+Helper Function - Writing to File: Create a helper function that writes the frequencies to a specified file in the required format. This function should take as parameters:
+the file name
+a frequency array
+the size of the array.
 This function will be used in both alphabetlettercount and specialcharcount functions.
 
+Main Logic Files: Implement the alphabetlettercount and specialcharcount functions in alphabetcount.c and specialcount.c respectively, using the helper functions.
 Main Logic Files: 
 Implement the alphabetlettercount and specialcharcount functions in alphabetcount.c and specialcount.c respectively, using the helper functions.
 

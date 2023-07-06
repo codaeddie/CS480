@@ -41,5 +41,5 @@
   
 */
 void alphabetlettercount(char *path, char *filetowrite, long alphabetfreq[]){
-    charcount(path, filetowrite, alphabetfreq, ALPHABETSIZE, is_alphabet);
+    charcount(path, filetowrite, alphabetfreq, ALPHABETSIZE, isalphabet);
 }

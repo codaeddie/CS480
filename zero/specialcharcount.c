@@ -49,5 +49,5 @@
   
 */
 void specialcharcount(char *path, char *filetowrite, long charfreq[]){
-    charcount(path, filetowrite, charfreq, SPECIALCHARSIZE, is_special);
+    charcount(path, filetowrite, charfreq, SPECIALCHARSIZE, isspecialchar);
 }

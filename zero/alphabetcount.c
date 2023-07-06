@@ -2,9 +2,7 @@
  * alphabetcount.c - this file implements the alphabetlettercount function.
  */
 #include "count.h"
-
 #include <stdio.h> 
-#include "count.h"
 
 /**
   The alphabetlettercount function counts the frequency of each alphabet letter (a-z, case insensitive) in all the .txt files under

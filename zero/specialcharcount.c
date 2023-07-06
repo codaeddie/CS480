@@ -3,9 +3,7 @@
  */
 
 #include "count.h"
-
-#include <stdio.h> 
-#include "count.h"
+#include <stdio.h>
 
 /**
   The specialcharcount function counts the frequency of the following 5 special characters:

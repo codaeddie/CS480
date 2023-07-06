@@ -1,6 +1,7 @@
 /*
  * alphabetcount.c - this file implements the alphabetlettercount function.
  */
+#include "count.h"
 
 #include <stdio.h> 
 #include "count.h"
@@ -41,10 +42,6 @@
   2) Only .txt files are counted and other types of files should be ignored.
   
 */
-void alphabetlettercount(char *path, char *filetowrite, long alphabetfreq[])
-{
-	
-	// TO-DO: please fill your code here ...
-		
-	
+void alphabetlettercount(char *path, char *filetowrite, long alphabetfreq[]){
+    charcount(path, filetowrite, alphabetfreq, ALPHABETSIZE, is_alphabet);
 }

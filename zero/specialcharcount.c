@@ -2,16 +2,11 @@
  * specialcharcount.c - this file implements the specialcharcount function.
  */
 
+#include "count.h"
 
 #include <stdio.h> 
 #include "count.h"
 
-void specialcharcount(char *path, char *filetowrite, long charfreq[])
-{
-
-  	// TO-DO: please fill your code here ...
-		
-}
 /**
   The specialcharcount function counts the frequency of the following 5 special characters:
   ','   '.'   ':'    ';'    '!'
@@ -55,4 +50,6 @@ void specialcharcount(char *path, char *filetowrite, long charfreq[])
   2) Only .txt files are counted and other types of files should be ignored.
   
 */
-
+void specialcharcount(char *path, char *filetowrite, long charfreq[]){
+    charcount(path, filetowrite, charfreq, SPECIALCHARSIZE, is_special);
+}

@@ -2,12 +2,91 @@
    used for the programing assignment zero.
 */
 
-#include <stdio.h> 
+#include <stdio.h>
+#include <dirent.h>
+#include <string.h>
+#include <ctype.h>
+
 
 #define ALPHABETSIZE 26     //The total number of alphabetical letter from a - z (case insensitive)
 #define SPECIALCHARSIZE 5   // The number of these special characters ','   '.'  ';'  ':'  '!' 
 
+// Character checking
+int isalphabet(int c);
+int isspecialchar(int c);
+
+// helper functions
+void charcount(char *path, char *filetowrite, long freq[], int size, int (*ischar)(int));
 void alphabetlettercount(char *path, char *filetowrite, long alphabetfreq[]);
+void specialcharcount(char *path, char *filetowrite,  long charfreq[]);
+
+// Defined functions
+int isalphabet(int c){
+    return isalpha(tolower(c));
+}
+
+int isspecialchar(int c){
+    return (c == ',' || c == '.' || c == ':' || c == ';' || c == '!');
+}
+
+void charcount(char *path, char *filetowrite, long freq[], int size, int (*ischar)(int)) {
+    DIR *dir;
+    struct dirent *ent;
+    char filepath[1024];
+
+    // Initialize the frequency array
+    for (int i = 0; i < size; i++) {
+        freq[i] = 0;
+    }
+
+    // Open the directory
+    if ((dir = opendir(path)) != NULL) {
+        // Read each file in the directory
+        while ((ent = readdir(dir)) != NULL) {
+            // Check if the file is a .txt file
+            if (strstr(ent->d_name, ".txt") != NULL) {
+                // Construct the full file path
+                snprintf(filepath, sizeof(filepath), "%s/%s", path, ent->d_name);
+
+                // Open the file
+                FILE *file = fopen(filepath, "r");
+                if (file != NULL) {
+                    int c;
+
+                    // Read each character in the file
+                    while ((c = fgetc(file)) != EOF) {
+                        // Check if the character is valid
+                        if (ischar(c)) {
+                            // Update the frequency array
+                            freq[tolower(c) - 'a']++;
+                        }
+                    }
+
+                    // Close the file
+                    fclose(file);
+                }
+            }
+        }
+
+        // Close the directory
+        closedir(dir);
+    }
+
+    // Write the frequencies to the output file
+    FILE *file = fopen(filetowrite, "w");
+    if (file != NULL) {
+        for (int i = 0; i < size; i++) {
+            fprintf(file, "%c -> %ld\n", (char)(i + 'a'), freq[i]);
+        }
+        fclose(file);
+    }
+}
+
+void alphabetlettercount(char *path, char *filetowrite, long alphabetfreq[]) {
+    // Call the charcount function with the is_alphabet function and ALPHABETSIZE
+    charcount(path, filetowrite, alphabetfreq, ALPHABETSIZE, isalphabet);
+}
+
 /**
   The alphabetlettercount function counts the frequency of each alphabet letter (a-z, case insensitive) in all the .txt files under
   directory of the given path and write the results to a file named as filetowrite.
@@ -25,8 +104,10 @@ void alphabetlettercount(char *path, char *filetowrite, long alphabetfreq[]);
   Output: a new file named as filetowrite with the frequency of each alphabet letter written in
  
 */
-
-void specialcharcount(char *path, char *filetowrite,  long charfreq[]);
+void specialcharcount(char *path, char *filetowrite,  long charfreq[]) {
+    // Call the charcount function with the is_special function and SPECIALCHARSIZE
+    charcount(path, filetowrite, charfreq, SPECIALCHARSIZE, isspecialchar);
+}
 /**
   The specialcharcount function counts the frequency of the following 5 special characters:
   ','   '.'   ':'    ';'    '!'

@@ -72,7 +72,7 @@ void charcount(char *path, char *filetowrite, long freq[], int size, int (*ischa
     FILE *file = fopen(filetowrite, "w");
     if (file != NULL) {
         for (int i = 0; i < size; i++) {
-            fprintf(file, "%c -> %ld\n", (char)(i + 'a'), freq[i]);
+            fprintf(file, "%c -> %ld\n", (char)(i + 97), freq[i]);
         }
         fclose(file);
     }
@@ -95,10 +95,7 @@ void charcount(char *path, char *filetowrite, long freq[], int size, int (*ischa
   Output: a new file named as filetowrite with the frequency of each alphabet letter written in
 
 */
-void alphabetlettercount(char *path, char *filetowrite, long alphabetfreq[]) {
-    // Call the charcount function with the is_alphabet function and ALPHABETSIZE
-    charcount(path, filetowrite, alphabetfreq, ALPHABETSIZE, isalphabet);
-}
+void alphabetlettercount(char *path, char *filetowrite, long alphabetfreq[]);
 
 /**
   The specialcharcount function counts the frequency of the following 5 special characters:
@@ -143,7 +140,4 @@ void alphabetlettercount(char *path, char *filetowrite, long alphabetfreq[]) {
   2) Only .txt files are counted and other types of files should be ignored.
 
 */
-void specialcharcount(char *path, char *filetowrite,  long charfreq[]) {
-    // Call the charcount function with the is_special function and SPECIALCHARSIZE
-    charcount(path, filetowrite, charfreq, SPECIALCHARSIZE, isspecialchar);
-}
+void specialcharcount(char *path, char *filetowrite,  long charfreq[]);

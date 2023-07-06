@@ -12,7 +12,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="751cc06e-403c-4577-8415-8cabb9fbe727" name="Changes" comment="" />
+    <list default="true" id="751cc06e-403c-4577-8415-8cabb9fbe727" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,7 +80,7 @@
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/home/eddie/workplace/cs480/prelimproj",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -106,7 +108,7 @@
       <option name="presentableId" value="Default" />
       <updated>1688630250860</updated>
       <workItem from="1688630251858" duration="5570000" />
-      <workItem from="1688653466080" duration="1907000" />
+      <workItem from="1688653466080" duration="2227000" />
     </task>
     <servers />
   </component>

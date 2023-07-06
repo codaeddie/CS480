@@ -2,8 +2,8 @@
 
 all: testalphabet testspecial
 
-OTHER_ALPHA__OBJS = testalphabetcount.o alphabetcount.o
-OTHER_SPECIAL__OBJS = testspecialcharcount.o specialcharcount.o
+OTHER_ALPHA__OBJS = testalphabetcount.o alphabetcount.o count.o
+OTHER_SPECIAL__OBJS = testspecialcharcount.o specialcharcount.o count.o
 
 CC = gcc
 CFLAGS = -g -std=c99
@@ -11,11 +11,10 @@ CFLAGS = -g -std=c99
 testalphabet:	${OTHER_ALPHA__OBJS}
 		${CC} -o testalphabet ${OTHER_ALPHA__OBJS}
 
-
 testspecial: ${OTHER_SPECIAL__OBJS}
 	 ${CC} -o testspecial ${OTHER_SPECIAL__OBJS}
 
-${OTHER_SPECIAL__OBJS} ${OTHER_SPECIAL__OBJS}:count.h
+${OTHER_SPECIAL__OBJS} ${OTHER_ALPHA__OBJS}:count.h
 
 clean:
 		rm -f *.o testalphabet testspecial

@@ -1,0 +1,66 @@
+## Programming: one (mulproc.c)
+
+The goal of this assignment is to familiarize with system calls such as `fork`, `exec`, `wait`, `exit` and so on,
+to spawn and terminate other user programs.
+
+### The main method `mulproc.c`
+
+The main method contains the following steps:
+
+```c
+int main(void) {
+    // Step 1: Fork the first child process to run `testalphabet` program.
+    // Step 2: Fork the second child process to run `testspecial` program.
+    // Step 3: Wait for the first child process to finish and print a message.
+    // Step 4: Wait for the second child process to finish and print a message.
+    // Step 5: End the program.
+}
+```
+
+#### Step 1 & 2: Forking child processes
+In both steps, first fork a child process. If in the child process,
+print a message indicating that  child is starting to run its show
+- `testalphabet`
+- `testspecial`
+use `exec` to replace the current process with the new program
+The parent process does nothing and continues to the next step
+
+Step 3 & 4: Waiting for child processes
+In these steps, we're playing the waiting game for each child process to wrap up their performance.
+After each wait call, we announce to the world that the child process has finished their gig.
+
+Step 5: End of the show
+The grand finale happens after both child processes have exited stage left,
+and we've announced their departure to the crowd.
+.
+the curtain falls,
+.
+.
+the lights dim,
+.
+.
+.
+and the program ends.
+
+Important Considerations
+Order of the Show:
+The order in which testalphabet and testspecial start might not be the same as the order
+in mind when we forked the child processes.
+That's because the show's schedule is managed by the OS,
+it can switch things up based on a whole bunch of factors.
+If the order of the performance really matters, we might need to consider "synchronizing" the processes.
+
+Error Handling Mishaps:
+The plan above assumes that all goes well with the system calls (fork, exec, and wait).
+In reality, things can go sideways and when they do,
+should be prepared to handle any problems and keep the show running.
+
+Finding the Right Stage executable files:
+The exec function needs the exact location of the testalphabet and testspecial programs.
+
+Curtain Call, (Child Termination sounds aggressive):
+The requirement to announce when a child process wraps up their program can be a bit tricky.
+Technically, when a child process exits,
+it's no longer in the spotlight (it has exited).
+handle this by having the parent process make the announcement after the wait call.
+Buuuuuutt it ain't the child process that's printing the message, idk if this is wrong?

@@ -1,0 +1,113 @@
+
+This assignment intends to familiarize you with Linux Programming using POSIX Pthreads and synchronization mechanism such as mutexes to create multithreading application.
+Assignment
+
+In your programming assignment#0, you have successfully implemented the testalphabet program to count frequency of each alphabet letter in .txt files under a given folder. In this assignment, you will have to speed up your program using multithreading.
+
+ 
+
+You will be provided a two.zip which includes the following files:
+
+makefile
+count.h
+alphabetcountmulthreads.c
+testmulthreads.c
+
+ 
+
+Your assignment is to write/modify code in the following files
+
+count.h
+makefile
+alphabetcountmulthreads.c // to count the frequency of alphabet letters;
+
+ 
+
+Note: Feel free to do any change of these files (fill the code, create new functions and etc). You also can create new .h and .c files if needed.
+
+ 
+
+The instructor/TA will use the following file to test your code, so please DON’T modify this file:
+
+testmulthreads.c
+
+ 
+
+Your program must execute correctly on Edoras machine, the instructor/TA will type the following commands to test your code:
+
+make               // generate testmulthreads executable file
+./testmulthreads 3 // run the testmulthreads program using 3 threads in parallel, the result will be stored in the alphabetfreq[] array and written in the file result.txt under result folder (Note: the instructor may vary the number of threads to verify your program)
+
+ 
+
+Requirements:
+
+* The workload is distributed equally among all the threads.
+* When a thread is created, a message should be print out showing which files this thread will process, for example:
+
+Thread id = 274237184 starts processing files with index from 0 to 10!
+
+* When a file is being processed, a message should be print out showing which thread (thread_id = xxx) is processing this file, for example:
+
+Thread id = 265844480 is processing file input_11.txt
+
+* When a thread is done with its workload, a message should be print out showing which files this thread has done with work, for example:
+
+      Thread id = 274237184 is done !
+
+* The array long alphabetfreq[ ] should always be up-to-date, i.e. it always has the result of all the threads counted so far. [You may need to protect this critical region.]
+* You should try different strategies and speedup the program to your best.
+
+ 
+
+You should have the screen printing be similar as follows:
+
+ Thread id = 274237184 starts processing files with index from 0 to 10!
+
+ Thread id = 265844480 starts processing files with index from 11 to 20!
+
+ Thread id = 257451776 starts processing files with index from 21 to 30!
+
+ 
+
+Thread id = 265844480 is processing file input_11.txt
+
+Thread id = 257451776 is processing file input_22.txt
+
+Thread id = 274237184 is processing file input_00.txt
+
+… …
+
+ 
+
+ Thread id = 274237184 is done !
+
+ Thread id = 265844480 is done !
+
+ Thread id = 257451776 is done !
+
+ 
+
+The results are counted as follows:
+
+a -> 2973036
+b -> 556908
+c -> 765864
+... ...
+
+ 
+
+Directions to complete your assignment
+
+1. Login Edoras machine
+2. Copy two.zip from the shared folder cs480-02 on Edoras server to programming folder
+3. Unzip the zip on edoras using the commands:
+
+unzip two.zip
+
+so you will have one more folders: two (source files) under programming directory on edoras machine
+
+1. Modify source files under folder two to complete this assignment
+2. Test your program to make sure it works correctly.
+3. Re-test your program following the commands provided above and record the terminal session to Test.log
+4. Answer all the questions in README file.
